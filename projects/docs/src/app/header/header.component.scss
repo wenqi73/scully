@@ -1,0 +1,51 @@
+:host {
+}
+
+.fixed-header-container {
+  background-color: rebeccapurple;
+  max-height: 60px;
+  min-height: 60px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+.toolbar {
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-flow: row nowrap;
+  margin-top: 0.9em;
+  position: relative;
+  text-align: left;
+
+  h1 {
+    margin: 0;
+  }
+
+  img {
+    margin-right: 8px;
+  }
+}
+
+nav {
+  margin: 0 20px;
+  a {
+    margin-right: 8px;
+    margin-left: 8px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}

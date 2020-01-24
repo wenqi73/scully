@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  background-color: rosybrown;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.sitemap {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 3em;
+  max-width: 1080px; // change in responsive
+
+  .footer-logo-nav {
+    display: table;
+    margin: 12px 20px 0 0;
+    padding: 1em;
+    width: 72px;
+  }
+}
+
+.item {
+  flex: 1;
+  nav {
+    a {
+      display: block;
+      margin: 3px 0;
+      padding: 3px 0;
+    }
+  }
+}

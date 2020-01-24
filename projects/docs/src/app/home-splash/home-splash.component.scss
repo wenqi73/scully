@@ -1,0 +1,15 @@
+:host {
+  background-color: aquamarine;
+  min-height: 300px;
+  padding: 20px 0;
+}
+
+.splash {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  .item {
+    margin: 0 auto;
+  }
+}
