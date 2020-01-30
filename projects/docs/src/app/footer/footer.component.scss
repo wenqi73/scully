@@ -29,3 +29,33 @@
     }
   }
 }
+
+@media only screen and (max-width: 720px) {
+  .sitemap {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 1rem;
+    position: relative;
+    text-align: center;
+  }
+
+  .footer-logo-nav {
+    position: absolute;
+    margin: 0 0 0 1rem;
+    padding: 1em;
+  }
+
+  .item {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    nav {
+      a {
+        padding: 0.5rem 0;
+      }
+    }
+  }
+}

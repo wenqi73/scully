@@ -18,6 +18,7 @@ a {
 
 .wrapper {
   max-width: 1100px;
+  margin: 0 auto;
 }
 
 .spacer {
@@ -28,6 +29,17 @@ a {
 
 @media only screen and (min-width: 1500px) {
   .wrapper {
+    margin: 0 auto;
     max-width: 1400px;
   }
+}
+
+@media only screen and (max-width: 1024px) {
+  .wrapper {
+    margin: 0 auto;
+    max-width: 860px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
 }
