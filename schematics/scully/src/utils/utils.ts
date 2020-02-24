@@ -143,7 +143,7 @@ class FileNotFoundException extends Error {
   }
 }
 
-export const getJsonFile = <T>(tree: Tree, path: string): T => {
+export function getJsonFile<T>(tree: Tree, path: string): T {
   const file = tree.get(path);
   if (!file) {
     throw new FileNotFoundException(path);
@@ -156,30 +156,25 @@ export const getJsonFile = <T>(tree: Tree, path: string): T => {
   } catch (e) {
     throw new SchematicsException(`File ${path} could not be parsed!`);
   }
-};
+}
 
-export const getFileContents = (tree: Tree, filePath: string): string => {
-  const buffer = tree.read(filePath) || '';
+export function getFileContents(tree: Tree, filePath: string): string {
+  const buffer: string = (tree.read(filePath) || '').toString();
+  return buffer;
+}
 
-  return buffer.toString();
-};
-
-export const getPackageJson = (tree: Tree, workingDirectory: string = ''): PackageJson => {
+export function getPackageJson(tree: Tree, workingDirectory: string = ''): PackageJson {
   const url = join(workingDirectory, PACKAGE_JSON);
 
   return getJsonFile(tree, url);
-};
+}
 
-export const overwritePackageJson = (
-  tree: Tree,
-  content: PackageJson,
-  workingDirectory: string = ''
-): Tree => {
+export function overwritePackageJson(tree: Tree, content: PackageJson, workingDirectory: string = ''): Tree {
   const url = join(workingDirectory, PACKAGE_JSON);
 
   tree.overwrite(url, JSON.stringify(content, null, 2));
   return tree;
-};
+}
 
 export function getSourceFile(host: Tree, path: string): ts.SourceFile {
   const buffer = host.read(path);
@@ -228,23 +223,23 @@ export const toAscii = (src: string) => {
   return result;
 };
 
-export const getProject = (host: Tree, project: string) => {
+export function getProject(host: Tree, project: string) {
   if (project === 'defaultProject') {
     const angularJson = JSON.parse(host.read('/angular.json').toString());
     return angularJson.defaultProject;
   }
   return project;
-};
+}
 
-export const getScullyConfig = (host: Tree, project: string) => {
+export function getScullyConfig(host: Tree, project: string) {
   const scullyConfigFile = `scully.${getProject(host, project)}.config.js`;
   return scullyConfigFile;
-};
+}
 
-export const checkProjectExist = (host: Tree, projectName: string) => {
+export function checkProjectExist(host: Tree, projectName: string) {
   const angularJson = JSON.parse(host.read('/angular.json').toString());
   if (angularJson.projects[projectName] !== undefined) {
     return true;
   }
   return false;
-};
+}

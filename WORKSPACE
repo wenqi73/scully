@@ -30,7 +30,6 @@ npm_install(
 )
 node_repositories(package_json = ["//:package.json"])
 
-
 # Install any Bazel rules which were extracted earlier by the npm_install rule.
 load("@npm//:install_bazel_dependencies.bzl", "install_bazel_dependencies")
 install_bazel_dependencies()
@@ -38,4 +37,3 @@ install_bazel_dependencies()
 # typescript dependencies
 load("@npm_bazel_typescript//:index.bzl", "ts_setup_workspace")
 ts_setup_workspace()
-

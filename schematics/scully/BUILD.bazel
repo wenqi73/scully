@@ -1,0 +1,43 @@
+package(default_visibility=["//visibility:public"])
+load("@npm_bazel_typescript//:index.bzl", "ts_library")
+
+exports_files([
+    "tsconfig.json"
+])
+
+ts_library(
+    name = "schematics-ts",
+    tsconfig = "tsconfig.json",
+    srcs = glob(
+        ["src/*.ts", "src/**/*.ts"],
+        exclude = [
+            "src/**/*_spec.ts",
+            "src/files/**",
+            "src/utils/test-utils.ts"
+        ]
+        ),
+    module_name = "@scullyio/init",
+    deps = [
+        "@npm//@angular-devkit/core",
+        "@npm//@angular-devkit/schematics",
+        "@npm//@schematics/angular",
+        "@npm//js-yaml",
+        "@npm//@types/jasmine",
+        "@npm//@types/js-yaml",
+        "@npm//@types/node",
+        "@npm//jasmine",
+        "@npm//typescript",
+        "@npm//guess-parser",
+        "@npm//tslib"
+    ]
+)
+
+# load("//tools/npm:package.bzl", "schematics_npm_package")
+
+# dataform_npm_package(
+#     name = "@scullyio/init",
+#     package_layers = [
+#         "./package.json",
+#     ],
+#     deps = [":schematics-ts"],
+# )

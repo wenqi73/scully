@@ -1,5 +1,5 @@
 ###############################################################
-################# TYPESCRIPT COMPILER #########################
+################# SCULLY TYPESCRIPT COMPILER #########################
 ###############################################################
 
 package(default_visibility=["//visibility:public"])
@@ -13,7 +13,7 @@ ts_library(
     name = "scully-ts",
     tsconfig = "tsconfig.scully.json",
     srcs = glob(["*.ts", "**/*.ts"]),
-    module_name = "@herodevs/scully",
+    module_name = "@scullyio/scully",
     deps = [
         "@npm//fs-extra",
         "@npm//rxjs",

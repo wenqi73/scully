@@ -7,6 +7,7 @@ export default (options: Schema): Rule => {
   return chain([routeDiscovery(options)]);
 };
 
+// @ts-ignore
 const routeDiscovery = (options: Schema) => async (tree: Tree, context: SchematicContext) => {
   let routes: any[] | string[] = [];
   const projectName = getProject(tree, options.project);

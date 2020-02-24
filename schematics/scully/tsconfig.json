@@ -4,6 +4,7 @@
     "lib": ["es2018", "dom"],
     "declaration": true,
     "module": "commonjs",
+    "importHelpers": true,
     "moduleResolution": "node",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
