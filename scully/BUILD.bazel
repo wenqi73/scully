@@ -12,7 +12,7 @@ exports_files([
 ts_library(
     name = "scully-ts",
     tsconfig = "tsconfig.scully.json",
-    srcs = glob(["*.ts", "**/*.ts"]),
+    srcs = glob(["*.ts", "**/*.ts"], exclude = ["**/**/*.d.ts"]),
     module_name = "@scullyio/scully",
     deps = [
         "@npm//fs-extra",
@@ -22,9 +22,11 @@ ts_library(
         "@npm//@types/node",
         "@npm//@types/puppeteer",
         "@npm//@types/yargs",
+        "@npm//@types/yamljs",
         "@npm//@types/jsdom",
         "@npm//codelyzer",
         "@npm//express",
+        "@npm//open",
         "@npm//guess-parser",
         "@npm//marked",
         "@npm//puppeteer",
@@ -37,6 +39,11 @@ ts_library(
         "@npm//selfsigned",
         "@npm//http-proxy-middleware",
         "@npm//jsdom",
+        "@npm//asciidoctor.js",
+        "@npm//front-matter",
+        "@npm//tslib",
+        "@npm//prettier",
+        "@npm//ts-node",
     ]
 )
 
@@ -50,9 +57,7 @@ load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
 nodejs_binary(
     name = "run",
     data = [
-      ":scully-ts",
-      "@npm//asciidoctor.js",
-      "@npm//front-matter",
+      ":scully-ts"
     ],
     entry_point = ":index.ts",
     args = ["serve"],
