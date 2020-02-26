@@ -11,9 +11,7 @@ ts_library(
     srcs = glob(
         ["src/*.ts", "src/**/*.ts"],
         exclude = [
-            "src/**/*_spec.ts",
-            "src/files/**",
-            "src/utils/test-utils.ts"
+            "src/files/**"
         ]
         ),
     module_name = "@scullyio/init",
