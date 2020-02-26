@@ -1,8 +1,8 @@
 const {join} = require('path');
 /** load the plugin  */
-require('./extraPlugin/extra-plugin.js');
-require('./extraPlugin/tocPlugin');
-require('./extraPlugin/voidPlugin');
+require('./etc/extraPlugin/extra-plugin.js');
+require('./etc/extraPlugin/tocPlugin');
+require('./etc/extraPlugin/voidPlugin');
 
 exports.config = {
   /** outDir is where the static distribution files end up */
@@ -68,14 +68,14 @@ exports.config = {
       type: 'contentFolder',
       // postRenderers: ['toc'],
       slug: {
-        folder: './blog',
+        folder: './etc/blog',
       },
     },
     '/blog/:slug': {
       type: 'contentFolder',
       // postRenderers: ['toc'],
       slug: {
-        folder: './blog',
+        folder: './etc/blog',
       },
     },
   },

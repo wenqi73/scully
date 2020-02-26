@@ -19,7 +19,7 @@ console.log('yah');
 
 Hello Dolly?
 
-Related information [page-2](/blog/page-2)
+Related information [page-2](/etc/blog/page-2)
 
 # Down-under
 

@@ -16,6 +16,6 @@ slugs:
 console.log('amazing');
 ```
 
-Related information [page-1](/blog/page-1)
+Related information [page-1](/etc/blog/page-1)
 
 [site-map](/home)
