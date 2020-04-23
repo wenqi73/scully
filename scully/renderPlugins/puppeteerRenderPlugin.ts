@@ -13,13 +13,14 @@ import {createFolderFor} from '../utils';
 
 const errorredPages = new Set<string>();
 
+let version = '0.0.0';
+try {
+  const {version: pkgVersion} = jsonc.parse(readFileSync(join(__dirname, '../package.json')).toString());
+  version = pkgVersion || '0.0.0';
+} catch {}
+
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
-  let version = '0.0.0';
-  try {
-    const {version: pkgVersion} = jsonc.parse(readFileSync(join(__dirname, '../package.json')).toString());
-    version = pkgVersion || '0.0.0';
-  } catch {}
   const path = scullyConfig.hostUrl
     ? `${scullyConfig.hostUrl}${route.route}`
     : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
@@ -100,6 +101,12 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
      * with the `.toString` that evalutate uses
      */
     pageHtml = await page.content();
+
+    /** Check for undefined content and re-try */
+    if ([undefined, null, '', 'undefined', 'null'].includes(pageHtml)) {
+      throw new Error(`Route "${route.route}" render to ${path}`);
+    }
+
     /** save thumbnail to disk code */
     if (scullyConfig.thumbnails) {
       const file = join(scullyConfig.outDir, route.route, '/thumbnail.jpg');
